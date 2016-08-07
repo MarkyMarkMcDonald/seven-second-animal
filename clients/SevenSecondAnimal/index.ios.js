@@ -49,11 +49,11 @@ class SevenSecondAnimal extends Component {
     this.onUpdate = this.onUpdate.bind(this);
     DeviceUUID.getUUID().then((uuid) => {
       this.setState({
-        uuid: uuid
+        authoredBy: uuid
       });
     }).catch(() => {
       this.setState({
-        uuid: "dumpster"
+        authoredBy: "dumpster"
       });
     })
   }
@@ -86,9 +86,19 @@ class SevenSecondAnimal extends Component {
    * you'll receive the base64 representation of the drawing as a callback.
    */
   onUpdate(base64Image) {
-    console.log("image updated");
-    console.log(base64Image);
-    this.setState({ encodedSignature: base64Image });
+    console.log("fetching!");
+    fetch('http://localhost:3000/drawings', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        animal: 'Giraffe',
+        authoredBy: this.state.authoredBy,
+        rawImage: base64Image
+      })
+    })
   }
 
   render() {

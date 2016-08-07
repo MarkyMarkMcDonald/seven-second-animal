@@ -1,0 +1,15 @@
+{
+  "name": "seven-second-animal",
+  "version": "0.0.1",
+  "description": "Stores and displays seven-second-animals",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0"
+  }
+}
