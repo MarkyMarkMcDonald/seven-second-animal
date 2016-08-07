@@ -14,6 +14,7 @@ import {
 
 import React, { Component } from 'react';
 import Sketch from 'react-native-sketch';
+import DeviceUUID from 'react-native-device-uuid';
 
 const styles = StyleSheet.create({
   container: {
@@ -46,6 +47,15 @@ class SevenSecondAnimal extends Component {
     this.onReset = this.onReset.bind(this);
     this.onSave = this.onSave.bind(this);
     this.onUpdate = this.onUpdate.bind(this);
+    DeviceUUID.getUUID().then((uuid) => {
+      this.setState({
+        uuid: uuid
+      });
+    }).catch(() => {
+      this.setState({
+        uuid: "dumpster"
+      });
+    })
   }
 
   state = {
